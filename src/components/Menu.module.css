@@ -67,12 +67,13 @@
 .searchInput {
   width: 100%;
   padding: 14px 44px 14px 48px;
-  border: 1px solid rgba(26, 20, 15, 0.1);
+  border: 1px solid rgba(26, 20, 15, 0.2);
   border-radius: var(--radius-full);
-  background: var(--color-dark);
+  background: transparent; /* Changed from #ffffff to transparent */
+  color: var(--color-dark);
   font-size: 0.95rem;
   transition: all var(--transition-base);
-  box-shadow: var(--shadow-sm);
+  box-shadow: none; /* Removed shadow so it blends perfectly */
 }
 
 .searchInput:focus {
@@ -105,9 +106,9 @@
 .tab {
   padding: 10px 22px;
   border-radius: var(--radius-full);
-  border: 1px solid rgba(26, 20, 15, 0.12);
+  border: 1px solid rgba(26, 20, 15, 0.3);
   background: transparent;
-  color: var(--color-text-light);
+  color: var(--color-dark);
   font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: 0.04em;
@@ -116,8 +117,9 @@
 }
 
 .tab:hover {
-  border-color: var(--color-gold);
-  color: var(--color-gold-dim);
+  border-color: var(--color-dark);
+  background: rgba(26, 20, 15, 0.05);
+  color: var(--color-dark);
 }
 
 .tabActive {
@@ -257,7 +259,8 @@
 }
 
 .detailedCard:hover {
-  background: #ffffff;
+  background: rgba(26, 20, 15, 0.03);
+  /* Halka sa brownish tint */
   border-color: rgba(216, 165, 97, 0.2);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   transform: translateY(-2px);
