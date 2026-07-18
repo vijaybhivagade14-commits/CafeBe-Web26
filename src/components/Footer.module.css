@@ -9,8 +9,7 @@
   position: relative;
   background: #17110d;
   color: #c4bbb0;
-  margin-top: 100px;
-  /* Dome ke liye extra jagah chhod di hai */
+  /* margin-top removed to fix the white gap */
 }
 
 /* 1. The Continuous Wavy Edge */
