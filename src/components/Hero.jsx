@@ -42,10 +42,11 @@ const Hero = () => {
       aria-label="Welcome to Cafe BE"
     >
       {/* Static Dark Background Image */}
+      {/* Premium Background Color is now handled in CSS (.hero) */}
       <div className={styles.bgWrap}>
-        <img src="/images/dark-bg.jpg" alt="" className={styles.bgImageStatic} aria-hidden="true" />
-        <div className={styles.overlay} />
+        {/* Deleted the image and overlay so the beautiful gradient shows through */}
       </div>
+
 
       {/* Floating Parallax Food (Now with Scroll Effect!) */}
       <div className={styles.parallaxWrap}>
