@@ -1,0 +1,199 @@
+/* ===== GALLERY SECTION ===== */
+.section {
+  padding: var(--section-padding);
+  background: var(--color-cream-2);
+}
+
+.inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.kicker {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 16px;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: clamp(30px, 5vw, 52px);
+  color: var(--color-dark);
+}
+
+.title em {
+  font-style: italic;
+  color: var(--color-gold-dim);
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.tab {
+  padding: 10px 22px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(26, 20, 15, 0.12);
+  background: transparent;
+  color: var(--color-text-light);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.tab:hover {
+  border-color: var(--color-gold);
+  color: var(--color-gold-dim);
+}
+
+.tabActive {
+  background: var(--color-dark);
+  color: var(--color-white);
+  border-color: var(--color-dark);
+}
+
+/* Masonry Grid */
+.grid {
+  columns: 3;
+  column-gap: 20px;
+}
+
+.item {
+  position: relative;
+  break-inside: avoid;
+  margin-bottom: 20px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.item img {
+  width: 100%;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.item:hover img {
+  transform: scale(1.06);
+}
+
+.itemOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(26, 20, 15, 0.5);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.item:hover .itemOverlay {
+  opacity: 1;
+}
+
+.itemOverlay span {
+  color: var(--color-white);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 10px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: var(--radius-full);
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(10px);
+  animation: lbFadeIn 0.3s ease;
+}
+
+.lbClose {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  color: white;
+  font-size: 28px;
+  padding: 8px;
+  z-index: 2;
+  transition: color var(--transition-fast);
+}
+
+.lbClose:hover {
+  color: var(--color-gold);
+}
+
+.lbImage {
+  max-width: 85vw;
+  max-height: 85vh;
+  border-radius: var(--radius-sm);
+  object-fit: contain;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.lbNav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  font-size: 32px;
+  padding: 12px;
+  z-index: 2;
+  transition: all var(--transition-fast);
+  border-radius: 50%;
+}
+
+.lbNav:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-gold);
+}
+
+.lbPrev {
+  left: 20px;
+}
+
+.lbNext {
+  right: 20px;
+}
+
+@keyframes lbFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .grid {
+    columns: 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    columns: 1;
+  }
+}

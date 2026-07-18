@@ -1,0 +1,54 @@
+/* ===== GALLERY PAGE ===== */
+.page {
+  background: var(--color-cream);
+}
+
+.heroSection {
+  position: relative;
+  min-height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-dark) center/cover no-repeat;
+  text-align: center;
+  color: var(--color-text-light);
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(26, 20, 15, 0.75);
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  padding: 120px 24px 60px;
+}
+
+.heroContent h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(30px, 6vw, 52px);
+  margin: 0 0 16px;
+}
+
+.heroContent h1 em {
+  color: var(--color-gold);
+}
+
+.heroContent p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #d4ccc2;
+}
+
+.kicker {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 16px;
+}

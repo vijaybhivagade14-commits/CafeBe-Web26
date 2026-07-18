@@ -1,0 +1,189 @@
+/* ===== RESERVATION SECTION ===== */
+.section {
+  padding: var(--section-padding);
+  background: var(--color-dark-2);
+  color: var(--color-text-light);
+}
+
+.inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.kicker {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 16px;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: clamp(30px, 5vw, 48px);
+  margin-bottom: 16px;
+}
+
+.title em {
+  font-style: italic;
+  color: var(--color-gold);
+}
+
+.subtitle {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #b8a992;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* Form */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #d4ccc2;
+}
+
+.fieldIcon {
+  color: var(--color-gold);
+  font-size: 15px;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-md);
+  color: var(--color-text-light);
+  font-size: 0.95rem;
+  transition: border-color var(--transition-fast);
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--color-gold);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.field select {
+  cursor: pointer;
+  appearance: auto;
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.error {
+  font-size: 0.8rem;
+  color: #e74c3c;
+}
+
+.submitBtn {
+  width: 100%;
+  padding: 18px;
+  background: linear-gradient(135deg, #d8a561, #c4923e);
+  color: var(--color-dark);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  box-shadow: 0 8px 24px rgba(216, 165, 97, 0.3);
+  margin-top: 8px;
+}
+
+.submitBtn:hover {
+  background: linear-gradient(135deg, #f0c984, #d8a561);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(216, 165, 97, 0.45);
+}
+
+/* Success */
+.success {
+  text-align: center;
+  padding: 56px 32px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(46, 204, 113, 0.25);
+  border-radius: var(--radius-xl);
+  animation: successPop 0.5s ease;
+}
+
+.successIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  color: white;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.success h3 {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  margin: 0 0 10px;
+}
+
+.success p {
+  color: #b8a992;
+  margin: 0;
+}
+
+@keyframes successPop {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+}

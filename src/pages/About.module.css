@@ -1,0 +1,243 @@
+/* ===== ABOUT PAGE ===== */
+.page {
+  background: var(--color-cream);
+}
+
+/* Hero */
+.heroSection {
+  position: relative;
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-dark) center/cover no-repeat;
+  text-align: center;
+  color: var(--color-text-light);
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(26, 20, 15, 0.75);
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+  padding: 120px 24px 80px;
+}
+
+.heroContent h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(32px, 6vw, 56px);
+  margin: 0 0 20px;
+}
+
+.heroContent h1 em {
+  color: var(--color-gold);
+}
+
+.heroContent p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #d4ccc2;
+}
+
+.kicker {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 16px;
+}
+
+/* Sections */
+.section {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: clamp(48px, 8vw, 80px) clamp(20px, 6vw, 80px);
+}
+
+.sectionTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(28px, 4vw, 44px);
+  text-align: center;
+  margin-bottom: 40px;
+  color: var(--color-dark);
+}
+
+.sectionTitle em {
+  color: var(--color-gold-dim);
+}
+
+/* Grid */
+.grid3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.card {
+  background: var(--color-dark);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(26, 20, 15, 0.04);
+  transition: all var(--transition-base);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.card h2 {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  color: var(--color-dark);
+  margin: 0 0 12px;
+}
+
+.card p {
+  font-size: 0.92rem;
+  line-height: 1.8;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* Image Row */
+.imageRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.imageRow img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-base);
+}
+
+.imageRow img:hover {
+  transform: scale(1.03);
+}
+
+/* Team */
+.teamSection {
+  padding: clamp(48px, 8vw, 80px) clamp(20px, 6vw, 80px);
+  background: var(--color-cream-2);
+  text-align: center;
+}
+
+.teamInner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  justify-items: center;
+}
+
+.teamMember {
+  text-align: center;
+  transition: transform var(--transition-base);
+}
+
+.teamMember:hover {
+  transform: translateY(-6px);
+}
+
+.teamMember img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid rgba(216, 165, 97, 0.2);
+  box-shadow: var(--shadow-md);
+  margin-bottom: 16px;
+  transition: border-color var(--transition-base);
+}
+
+.teamMember:hover img {
+  border-color: var(--color-gold);
+}
+
+.teamMember h3 {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  color: var(--color-dark);
+  margin: 0 0 4px;
+}
+
+.teamMember span {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-gold-dim);
+}
+
+/* Info Cards */
+.infoCard {
+  background: var(--color-dark);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(26, 20, 15, 0.04);
+  transition: all var(--transition-base);
+}
+
+.infoCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.infoIcon {
+  font-size: 28px;
+  color: var(--color-gold);
+  margin-bottom: 14px;
+}
+
+.infoCard h3 {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  color: var(--color-dark);
+  margin: 0 0 8px;
+}
+
+.infoCard p {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .grid3 {
+    grid-template-columns: 1fr;
+  }
+
+  .imageRow {
+    grid-template-columns: 1fr;
+  }
+
+  .teamGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .teamGrid {
+    grid-template-columns: 1fr;
+  }
+}

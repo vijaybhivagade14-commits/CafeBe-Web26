@@ -1,0 +1,141 @@
+/* ===== SPECIAL MENU ===== */
+.section {
+  padding: var(--section-padding);
+  background: var(--color-dark);
+  color: var(--color-text-light);
+}
+
+.inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.kicker {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 16px;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: clamp(32px, 5vw, 52px);
+  margin-bottom: 16px;
+}
+
+.title em {
+  font-style: italic;
+  color: var(--color-gold);
+}
+
+.subtitle {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #b8a992;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-base);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(216, 165, 97, 0.25);
+  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.3);
+}
+
+.imgWrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.imgWrap img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  transition: transform 0.7s ease;
+}
+
+.card:hover .imgWrap img {
+  transform: scale(1.08);
+}
+
+.badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #d8a561, #c4923e);
+  color: var(--color-dark);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: var(--radius-full);
+  box-shadow: 0 4px 14px rgba(216, 165, 97, 0.4);
+}
+
+.body {
+  padding: 24px 24px 28px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.top h3 {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  margin: 0;
+}
+
+.price {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-gold);
+  white-space: nowrap;
+}
+
+.body p {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: #a89e93;
+  margin: 0;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}

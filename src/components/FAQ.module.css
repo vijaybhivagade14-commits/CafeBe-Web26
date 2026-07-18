@@ -1,0 +1,131 @@
+/* ===== FAQ SECTION ===== */
+.section {
+  padding: var(--section-padding);
+  background: var(--color-cream);
+}
+
+.inner {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.kicker {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 16px;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: clamp(30px, 5vw, 48px);
+  color: var(--color-dark);
+  margin-bottom: 14px;
+}
+
+.title em {
+  font-style: italic;
+  color: var(--color-gold-dim);
+}
+
+.subtitle {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+}
+
+/* List */
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.item {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(26, 20, 15, 0.06);
+  overflow: hidden;
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-sm);
+}
+
+.item:hover {
+  border-color: rgba(216, 165, 97, 0.2);
+}
+
+.itemOpen {
+  border-color: rgba(216, 165, 97, 0.3);
+  box-shadow: var(--shadow-md);
+}
+
+.question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-dark);
+  transition: color var(--transition-fast);
+}
+
+.question:hover {
+  color: var(--color-gold-dim);
+}
+
+.chevron {
+  flex-shrink: 0;
+  font-size: 20px;
+  color: var(--color-gold);
+  transition: transform var(--transition-base);
+}
+
+.itemOpen .chevron {
+  transform: rotate(180deg);
+}
+
+/* Answer with smooth transition */
+.answerWrap {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.itemOpen .answerWrap {
+  max-height: 300px;
+}
+
+.answer {
+  padding: 0 24px 22px;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--color-text-body);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .question {
+    padding: 16px 18px;
+    font-size: 0.95rem;
+  }
+
+  .answer {
+    padding: 0 18px 18px;
+  }
+}

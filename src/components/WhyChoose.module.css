@@ -1,0 +1,126 @@
+/* ===== WHY CHOOSE US ===== */
+.section {
+  padding: var(--section-padding);
+  background: var(--color-cream);
+}
+
+.inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.kicker {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 16px;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: clamp(32px, 5vw, 52px);
+  color: var(--color-dark);
+  margin-bottom: 16px;
+}
+
+.title em {
+  font-style: italic;
+  color: var(--color-gold-dim);
+}
+
+.subtitle {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--color-text-muted);
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+
+.card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: 36px 28px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(26, 20, 15, 0.04);
+  transition: all var(--transition-base);
+  animation: cardFadeUp 0.6s ease both;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(216, 165, 97, 0.2);
+}
+
+.iconWrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, rgba(216, 165, 97, 0.12), rgba(216, 165, 97, 0.05));
+  color: var(--color-gold);
+  font-size: 26px;
+  margin-bottom: 20px;
+  transition: all var(--transition-base);
+}
+
+.card:hover .iconWrap {
+  background: linear-gradient(135deg, #d8a561, #c4923e);
+  color: var(--color-white);
+  transform: scale(1.1);
+}
+
+.card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  color: var(--color-dark);
+  margin-bottom: 12px;
+}
+
+.card p {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+}
+
+@keyframes cardFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 580px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
