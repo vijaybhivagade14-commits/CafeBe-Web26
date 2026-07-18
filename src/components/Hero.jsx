@@ -49,26 +49,37 @@ const Hero = () => {
 
 
       {/* Floating Parallax Food (Now with Scroll Effect!) */}
+      {/* Floating Parallax Food (Now with perfectly smooth idle floating) */}
       <div className={styles.parallaxWrap}>
+
         {/* Left side pizza */}
-        <img
-          src="/images/pizza.png"
-          alt="Pizza"
-          className={`${styles.floatingImg} ${styles.pizzaImg}`}
-          /* Added "+ scrollY * 0.15" for smooth upward scroll movement */
+        <div
+          className={styles.floatingWrapper}
           style={{ transform: `translate(${mousePos.x}px, ${mousePos.y + scrollY * 0.15}px) rotate(${mousePos.x * 0.2}deg)` }}
-          aria-hidden="true"
-        />
+        >
+          <img
+            src="/images/pizza.png"
+            alt="Pizza"
+            className={`${styles.floatingFood} ${styles.pizzaImg}`}
+            aria-hidden="true"
+          />
+        </div>
+
         {/* Right side burger */}
-        <img
-          src="/images/Burger-panner.png"
-          alt="Burger"
-          className={`${styles.floatingImg} ${styles.burgerImg}`}
-          /* Added "+ scrollY * 0.25" so the burger moves at a slightly different speed (looks more 3D!) */
+        <div
+          className={styles.floatingWrapper}
           style={{ transform: `translate(${mousePos.x * -1}px, ${mousePos.y * -1 + scrollY * 0.25}px) rotate(${mousePos.x * -0.2}deg)` }}
-          aria-hidden="true"
-        />
+        >
+          <img
+            src="/images/Burger-panner.png"
+            alt="Burger"
+            className={`${styles.floatingFood} ${styles.burgerImg}`}
+            aria-hidden="true"
+          />
+        </div>
+
       </div>
+
 
       {/* Content (Leave everything below this exactly as it was) */}
       <div className={styles.content}>
