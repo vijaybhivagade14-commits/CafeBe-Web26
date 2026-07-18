@@ -1,10 +1,54 @@
 /* ===== FOOTER ===== */
-.footer {
+/* .footer {
   background: var(--color-dark);
   color: #c4bbb0;
+} */
+
+/* ===== NEW PREMIUM FOOTER WITH CENTER DOME ===== */
+.footer {
+  position: relative;
+  background: #17110d;
+  color: #c4bbb0;
+  margin-top: 100px;
+  /* Dome ke liye extra jagah chhod di hai */
 }
 
+/* 1. The Continuous Wavy Edge */
+.footer::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  /* Wave ki height */
+  left: 0;
+  right: 0;
+  height: 60px;
+  /* Perfect continuous wave SVG (Center me peak hai) */
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0 C100,0 200,120 300,120 C400,120 500,0 600,0 C700,0 800,120 900,120 C1000,120 1100,0 1200,0 L1200,120 L0,120 Z' fill='%2317110d'/%3E%3C/svg%3E") no-repeat center bottom;
+  background-size: 100% 100%;
+  z-index: 1;
+}
+
+/* 2. The Coffee Cup Image centered perfectly on the wave peak */
+.cupImage {
+  position: absolute;
+  top: -110px;
+  /* Cup ko thoda niche kiya taaki exact wave peak ke middle me baithe */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  z-index: 2;
+  border: 5px solid #17110d;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+
 .inner {
+  position: relative;
+  z-index: 3;
+  /* Zaroori hai taaki andar ka text in curves ke upar rahe */
   max-width: var(--container-max);
   margin: 0 auto;
   padding: clamp(48px, 8vw, 80px) clamp(20px, 6vw, 80px);
@@ -12,6 +56,15 @@
   grid-template-columns: 1.4fr 0.8fr 1fr 1.1fr;
   gap: 48px;
 }
+
+/* .inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: clamp(48px, 8vw, 80px) clamp(20px, 6vw, 80px);
+  display: grid;
+  grid-template-columns: 1.4fr 0.8fr 1fr 1.1fr;
+  gap: 48px;
+} */
 
 /* Brand Column */
 .brand {

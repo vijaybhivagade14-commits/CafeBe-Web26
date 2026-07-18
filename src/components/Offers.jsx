@@ -7,7 +7,7 @@ const offers = [
     title: 'Breakfast Special',
     desc: 'Buy one get one on all coffee orders before 11am. Start your day the Cafe BE way.',
     discount: 'BOGO',
-    img: '/images/1.jpg',
+    img: '/images/5.jpg',
   },
   {
     title: 'Weekend Brunch',
