@@ -48,8 +48,7 @@ const Hero = () => {
       </div>
 
 
-      {/* Floating Parallax Food (Now with Scroll Effect!) */}
-      {/* Floating Parallax Food (Now with perfectly smooth idle floating) */}
+      {/* Floating Parallax Food */}
       <div className={styles.parallaxWrap}>
 
         {/* Left side pizza */}
@@ -57,12 +56,7 @@ const Hero = () => {
           className={styles.floatingWrapper}
           style={{ transform: `translate(${mousePos.x}px, ${mousePos.y + scrollY * 0.15}px) rotate(${mousePos.x * 0.2}deg)` }}
         >
-          <img
-            src="/images/pizza.png"
-            alt="Pizza"
-            className={`${styles.floatingFood} ${styles.pizzaImg}`}
-            aria-hidden="true"
-          />
+          <img src="/images/pizza.png" alt="Pizza" className={`${styles.floatingFood} ${styles.pizzaImg}`} aria-hidden="true" />
         </div>
 
         {/* Right side burger */}
@@ -70,15 +64,25 @@ const Hero = () => {
           className={styles.floatingWrapper}
           style={{ transform: `translate(${mousePos.x * -1}px, ${mousePos.y * -1 + scrollY * 0.25}px) rotate(${mousePos.x * -0.2}deg)` }}
         >
+          <img src="/images/Burger-panner.png" alt="Burger" className={`${styles.floatingFood} ${styles.burgerImg}`} aria-hidden="true" />
+        </div>
+
+        {/* NEW: Top Right Leaves (vege2.png) */}
+        <div
+          className={styles.floatingWrapper}
+          /* I gave the leaves slightly different speed numbers so it looks like it's floating at a different distance! */
+          style={{ transform: `translate(${mousePos.x * -0.6}px, ${mousePos.y * -0.6 + scrollY * 0.1}px) rotate(${mousePos.x * 0.15}deg)` }}
+        >
           <img
-            src="/images/Burger-panner.png"
-            alt="Burger"
-            className={`${styles.floatingFood} ${styles.burgerImg}`}
+            src="/images/vege2.png"
+            alt="Leaves"
+            className={`${styles.floatingFood} ${styles.leavesImg}`}
             aria-hidden="true"
           />
         </div>
 
       </div>
+
 
 
       {/* Content (Leave everything below this exactly as it was) */}

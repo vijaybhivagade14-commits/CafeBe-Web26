@@ -70,8 +70,23 @@
   width: 35vw;
   max-width: 400px;
   bottom: 10%;
-  right: -5%;
+  right: -3%;
   animation: smoothIdleFloat 7s infinite alternate-reverse ease-in-out;
+}
+
+/* Position Leaves on the Top Right */
+.leavesImg {
+  width: 20vw;
+  /* Smaller than the burger so it looks like a garnish in the background */
+  max-width: 250px;
+  top: 3%;
+  /* Top corner */
+  right: -0.5%;
+  /* Pushed to the right edge */
+  /* Uses the same buttery smooth animation, but takes 8 seconds so it floats out of sync with the burger */
+  animation: smoothIdleFloat 8s infinite alternate ease-in-out;
+  filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.3));
+  /* Slightly softer shadow for the leaves */
 }
 
 /* The buttery smooth CSS animation */
