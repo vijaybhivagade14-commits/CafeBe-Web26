@@ -15,6 +15,67 @@
   z-index: 0;
 }
 
+/* Static background without animation */
+.bgImageStatic {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Wrapper for the floating food */
+.parallaxWrap {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  /* Sits between the background and the text */
+  pointer-events: none;
+  /* Ensures you can still click the buttons under the food */
+  overflow: hidden;
+}
+
+/* Base styles for both floating images */
+.floatingImg {
+  position: absolute;
+  transition: transform 0.1s ease-out;
+  /* Makes the mouse follow effect perfectly smooth */
+  will-change: transform;
+  filter: drop-shadow(0 25px 35px rgba(0, 0, 0, 0.8));
+  /* Premium 3D shadow effect */
+}
+
+/* Position Pizza on the Left */
+.pizzaImg {
+  width: 45vw;
+  /* Responsive size */
+  max-width: 500px;
+  top: 15%;
+  left: -10%;
+  /* Pulled to the left side */
+  animation: floatUpAndDown 6s infinite alternate ease-in-out;
+}
+
+/* Position Burger on the Right */
+.burgerImg {
+  width: 35vw;
+  /* Responsive size */
+  max-width: 400px;
+  bottom: 10%;
+  right: -5%;
+  /* Pulled to the right side */
+  animation: floatUpAndDown 7s infinite alternate-reverse ease-in-out;
+}
+
+/* Extra touch: Makes them subtly bob up and down on their own, even when the mouse stops */
+@keyframes floatUpAndDown {
+  0% {
+    margin-top: 0px;
+  }
+
+  100% {
+    margin-top: -25px;
+  }
+}
+
 .bgImage {
   width: 100%;
   height: 100%;
