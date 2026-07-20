@@ -69,11 +69,13 @@
   padding: 14px 44px 14px 48px;
   border: 1px solid rgba(26, 20, 15, 0.2);
   border-radius: var(--radius-full);
-  background: transparent; /* Changed from #ffffff to transparent */
+  background: transparent;
+  /* Changed from #ffffff to transparent */
   color: var(--color-dark);
   font-size: 0.95rem;
   transition: all var(--transition-base);
-  box-shadow: none; /* Removed shadow so it blends perfectly */
+  box-shadow: none;
+  /* Removed shadow so it blends perfectly */
 }
 
 .searchInput:focus {
@@ -96,36 +98,86 @@
   color: var(--color-dark);
 }
 
+/* ===== MENU TABS WITH LIQUID SMOOTH SWEEP EFFECT ===== */
 .tabs {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
   justify-content: center;
 }
 
 .tab {
-  padding: 10px 22px;
+  --flow-bg-color: #000000;
+
+  --tab-text-active: #ffffff;
+
+  --tab-border-hover: #000000;
+
+
+  position: relative;
+  padding: 10px 24px;
   border-radius: var(--radius-full);
   border: 1px solid rgba(26, 20, 15, 0.3);
   background: transparent;
   color: var(--color-dark);
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   font-weight: 600;
   letter-spacing: 0.04em;
   cursor: pointer;
-  transition: all var(--transition-fast);
+  z-index: 1;
+  overflow: hidden;
+  /* Flow animation ko button border ke andar rakhne ke liye */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  /* ⚡ Ultra Smooth Transition Timing */
+  transition:
+    color 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* 🌊 Background Sweeping Layer (Pseudo Element) */
+.tab::before {
+  content: '';
+  position: absolute;
+  /* 💥 FIX: -1px se cover karne par bottom/top par line bilkul nahi dikhegi */
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+
+  background-color: var(--flow-bg-color);
+  border-radius: var(--radius-full);
+  z-index: -1;
+
+  /* Initial State: Scale X zero (Hidden on left) */
+  transform: scaleX(0);
+  transform-origin: left center;
+
+  /* Smooth Wave Expansion */
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Hover Effect: Sweep from Left to Right */
 .tab:hover {
-  border-color: var(--color-dark);
-  background: rgba(26, 20, 15, 0.05);
-  color: var(--color-dark);
+  color: var(--tab-text-active);
+  border-color: var(--tab-border-hover);
 }
 
+.tab:hover::before {
+  transform: scaleX(1);
+}
+
+/* Active Tab State */
 .tabActive {
-  background: var(--color-dark);
-  color: var(--color-white);
-  border-color: var(--color-dark);
+  color: var(--tab-text-active) !important;
+  border-color: var(--tab-border-hover) !important;
+}
+
+.tabActive::before {
+  transform: scaleX(1) !important;
+  transform-origin: left center;
 }
 
 /* Grid */
