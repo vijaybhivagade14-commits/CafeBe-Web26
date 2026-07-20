@@ -1,6 +1,7 @@
 /* ===== GALLERY SECTION ===== */
 .section {
   padding: var(--section-padding);
+  padding-top: 40px;
   background: var(--color-cream-2);
 }
 
