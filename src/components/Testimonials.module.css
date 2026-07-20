@@ -46,36 +46,39 @@
   justify-content: center;
 }
 
-/* Card Container */
+/* 💥 CARD WITH PROPER VISIBLE BORDER LINE */
 .card {
   position: relative;
   background: var(--color-white, #ffffff);
   border-radius: 24px;
   padding: 64px 48px 40px 48px;
-  /* Top padding balanced for larger avatar */
   width: 100%;
   max-width: 720px;
-  box-shadow: 0 15px 35px rgba(26, 20, 15, 0.05);
-  border: 1px solid rgba(216, 165, 97, 0.15);
-  animation: fadeIn 0.4s ease-in-out;
+
+  /* Clear visible border line added */
+  border: 1.5px solid rgba(216, 165, 97, 0.4);
+
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.06);
+  animation: slideFadeIn 0.5s ease-in-out;
 }
 
-/* 💥 FIX: Badi Avatar Image + Background Cream Cutout Border */
+/* Circle Half Inside & Half Outside with Smooth Ring Cutout */
 .avatarWrap {
   position: absolute;
   top: -48px;
-  /* Badi size ke hisab se half afuera float karega */
   left: 44px;
-  /* Left top corner positioning */
-  width: 100px;
-  /* Increased Avatar Size (Thodi badi image) */
-  height: 100px;
+  width: 96px;
+  height: 96px;
   border-radius: 50%;
+  background: var(--color-white, #ffffff);
+  padding: 5px;
 
-  /* Background cutout gap - 6px thick cream border creates the cut effect */
-  background: var(--color-cream);
-  padding: 6px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  /* Double shadow ring effect around embedded circle cutout */
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.12),
+    0 0 0 1.5px rgba(216, 165, 97, 0.3);
+  /* Border ring connection */
+
   box-sizing: border-box;
   z-index: 5;
 }
@@ -85,11 +88,9 @@
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  /* Inner subtle golden outline */
+  border: 1px solid rgba(26, 20, 15, 0.1);
 }
 
-/* Card Internal Layout */
 .cardBody {
   display: flex;
   flex-direction: column;
@@ -144,7 +145,7 @@
   width: 46px;
   height: 46px;
   border-radius: 50%;
-  border: 1px solid rgba(26, 20, 15, 0.1);
+  border: 1px solid rgba(216, 165, 97, 0.3);
   background: var(--color-white, #ffffff);
   color: var(--color-dark);
   font-size: 22px;
@@ -153,7 +154,7 @@
   justify-content: center;
   cursor: pointer;
   z-index: 10;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
 }
 
@@ -195,19 +196,20 @@
   border-radius: 10px;
 }
 
-@keyframes fadeIn {
+/* Smooth Slide Animation when changing slide */
+@keyframes slideFadeIn {
   from {
-    opacity: 0.4;
-    transform: translateY(6px);
+    opacity: 0.3;
+    transform: translateX(12px);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
   }
 }
 
-/* Responsive Breakpoints */
+/* Responsive */
 @media (max-width: 768px) {
   .card {
     padding: 50px 24px 32px 24px;

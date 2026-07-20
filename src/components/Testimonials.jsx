@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FiChevronLeft, FiChevronRight, FiStar } from 'react-icons/fi';
 import styles from './Testimonials.module.css';
 
@@ -31,6 +31,7 @@ const testimonials = [
 
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false); // Pause on hover state
 
   const handlePrev = () => {
     setCurrentIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
@@ -40,12 +41,23 @@ const Testimonials = () => {
     setCurrentIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
   };
 
+  // ⚡ AUTO SCROLL TIMER LOGIC (Every 3.5 Seconds)
+  useEffect(() => {
+    if (isPaused) return; // Hover hone par timer pause ho jayega
+
+    const timer = setInterval(() => {
+      handleNext();
+    }, 3500); // 3.5 seconds delay
+
+    return () => clearInterval(timer); // Cleanup timer on unmount
+  }, [currentIndex, isPaused]);
+
   const current = testimonials[currentIndex];
 
   return (
     <section className={styles.section} aria-label="Guest Testimonials">
       <div className={styles.inner}>
-        
+
         {/* Header */}
         <div className={styles.header}>
           <span className={styles.kicker}>Testimonials</span>
@@ -54,32 +66,36 @@ const Testimonials = () => {
           </h2>
         </div>
 
-        {/* Carousel / Card Container */}
-        <div className={styles.carouselWrap}>
-          
+        {/* Carousel Wrap (Mouse Enter/Leave pe Auto Scroll Pause karega) */}
+        <div
+          className={styles.carouselWrap}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+
           {/* Navigation - Prev Button */}
-          <button 
-            className={`${styles.navBtn} ${styles.prevBtn}`} 
+          <button
+            className={`${styles.navBtn} ${styles.prevBtn}`}
             onClick={handlePrev}
             aria-label="Previous Testimonial"
           >
             <FiChevronLeft />
           </button>
 
-          {/* Testimonial Card with Top-Left Floating Avatar */}
+          {/* Testimonial Card */}
           <div className={styles.card}>
-            
-            {/* 1st Image Style: Left Top Floating Avatar */}
+
+            {/* Top-Left Floating Embedded Avatar */}
             <div className={styles.avatarWrap}>
               <img src={current.image} alt={current.name} className={styles.avatarImg} />
             </div>
 
             {/* Card Content Area */}
             <div className={styles.cardBody}>
-              
+
               {/* Guest Name */}
               <h3 className={styles.guestName}>{current.name}</h3>
-              
+
               {/* Guest Role / Tagline */}
               <span className={styles.guestRole}>{current.role}</span>
 
@@ -100,8 +116,8 @@ const Testimonials = () => {
           </div>
 
           {/* Navigation - Next Button */}
-          <button 
-            className={`${styles.navBtn} ${styles.nextBtn}`} 
+          <button
+            className={`${styles.navBtn} ${styles.nextBtn}`}
             onClick={handleNext}
             aria-label="Next Testimonial"
           >
