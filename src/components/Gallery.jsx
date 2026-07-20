@@ -51,6 +51,7 @@ const Gallery = () => {
               key={cat}
               className={`${styles.tab} ${filter === cat ? styles.tabActive : ''}`}
               onClick={() => setFilter(cat)}
+              type="button"
             >
               {cat}
             </button>

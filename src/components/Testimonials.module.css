@@ -1,6 +1,7 @@
 /* ===== TESTIMONIALS ===== */
 .section {
   padding: var(--section-padding);
+  padding-top: 40px;
   background: var(--color-cream);
 }
 
@@ -165,6 +166,7 @@
     opacity: 0;
     transform: translateX(20px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);

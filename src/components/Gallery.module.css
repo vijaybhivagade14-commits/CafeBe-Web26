@@ -36,42 +36,84 @@
   color: var(--color-gold-dim);
 }
 
-/* Tabs */
+/* Tabs Wrapper */
 .tabs {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
   justify-content: center;
   margin-bottom: 40px;
 }
 
+/* Base Tab Styling with Overflow Hidden for the Flow Effect */
 .tab {
-  padding: 10px 22px;
+  --flow-bg-color: #7f5539;
+  /* 🍫 Chocolate Brown (Jo text flow layer par aayega) */
+  --tab-text-active: #ffffff;
+  /* ⚪ Active/Hover hone par text ka color */
+  --tab-border-hover: #7f5539;
+
+  position: relative;
+  /* Background flow layers ke liye wrapper */
+  padding: 10px 24px;
   border-radius: var(--radius-full);
   border: 1px solid rgba(26, 20, 15, 0.3);
-  /* Border ko thoda dark kiya hai */
   background: transparent;
   color: var(--color-dark);
-  /* Text ko 'light' se 'dark' kar diya taaki saaf dikhe! */
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   font-weight: 600;
   letter-spacing: 0.04em;
   cursor: pointer;
-  transition: all var(--transition-fast);
+  z-index: 1;
+  overflow: hidden;
+  /* Taaki bahar nikalta hua color box ke andar hi rahe */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    color 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* Pseudo-element for Smooth Start-to-End Background Color Flow */
+.tab::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-dark);
+  /* Color flow base wrapper */
+  z-index: -1;
+  transform: scaleX(0);
+  /* Shuruat me color hidden rahega */
+  transform-origin: left center;
+  /* Flow left (start) se right (end) ki taraf chalega */
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Smooth Color Sweep on Hover */
 .tab:hover {
-  border-color: var(--color-dark);
-  background: rgba(26, 20, 15, 0.05);
-  /* Hover par halka sa effect */
-  color: var(--color-dark);
-}
-
-
-.tabActive {
-  background: var(--color-dark);
   color: var(--color-white);
   border-color: var(--color-dark);
+}
+
+.tab:hover::before {
+  transform: scaleX(1);
+  /* Left to right fill expansion */
+}
+
+/* Active State Configuration */
+.tabActive {
+  color: var(--color-white) !important;
+  border-color: var(--color-dark) !important;
+}
+
+/* Tab active hone par background color permanent left-to-right fill rahega */
+.tabActive::before {
+  transform: scaleX(1) !important;
+  transform-origin: left center;
 }
 
 /* Masonry Grid */
