@@ -1,126 +1,158 @@
-/* ===== WHY CHOOSE US ===== */
+/* ===== WHY CHOOSE US - DUAL COLOR HEADING GRID ===== */
 .section {
   padding: var(--section-padding);
+  padding-top: 80px;
+  padding-bottom: 80px;
   background: var(--color-cream);
+  overflow: hidden;
 }
 
 .inner {
   max-width: var(--container-max);
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+/* Left Image Box Wrapper */
+.imageSide {
+  width: 100%;
+  display: flex;
+}
+
+.mainImage {
+  width: 100%;
+  height: 540px;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.04);
+}
+
+/* Right Content Block */
+.contentSide {
+  display: flex;
+  flex-direction: column;
 }
 
 .header {
-  text-align: center;
-  margin-bottom: 56px;
+  text-align: left;
+  margin-bottom: 36px;
 }
 
 .kicker {
   display: inline-block;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--color-gold);
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
+/* Base Black/Dark color for first half of text */
 .title {
   font-family: var(--font-heading);
-  font-size: clamp(32px, 5vw, 52px);
+  font-size: clamp(30px, 3.8vw, 44px);
+  font-weight: 600;
   color: var(--color-dark);
+  /* Premium black/dark text color */
   margin-bottom: 16px;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
 }
 
-.title em {
-  font-style: italic;
-  color: var(--color-gold-dim);
+/* Chocolate Brown Color for second half of text */
+.title .highlight {
+  color: #7f5539;
+  /* Premium Chocolate Brown color */
+  font-weight: 600;
 }
 
 .subtitle {
   font-size: 1.05rem;
-  line-height: 1.8;
+  line-height: 1.7;
   color: var(--color-text-muted);
-  max-width: 540px;
-  margin: 0 auto;
+  margin: 0;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+/* Feature Point Row Structures */
+.verticalList {
+  display: flex;
+  flex-direction: column;
   gap: 28px;
 }
 
-.card {
-  background: var(--color-white);
-  border-radius: var(--radius-lg);
-  padding: 36px 28px;
-  text-align: center;
-  box-shadow: var(--shadow-sm);
-  border: 1px solid rgba(26, 20, 15, 0.04);
-  transition: all var(--transition-base);
-  animation: cardFadeUp 0.6s ease both;
+.listItem {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
-.card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-lg);
-  border-color: rgba(216, 165, 97, 0.2);
-}
-
-.iconWrap {
+/* Rounded circles for Coffee Icons */
+.iconCircle {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 64px;
-  height: 64px;
-  border-radius: var(--radius-md);
-  background: linear-gradient(135deg, rgba(216, 165, 97, 0.12), rgba(216, 165, 97, 0.05));
-  color: var(--color-gold);
-  font-size: 26px;
-  margin-bottom: 20px;
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background-color: #e6ccb2;
+  /* Soft warm gold-tan color */
+  color: #7f5539;
+  /* Deep chocolate/coffee icon color */
+  font-size: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
   transition: all var(--transition-base);
 }
 
-.card:hover .iconWrap {
+.listItem:hover .iconCircle {
   background: linear-gradient(135deg, #d8a561, #c4923e);
   color: var(--color-white);
-  transform: scale(1.1);
+  transform: translateY(-2px);
 }
 
-.card h3 {
-  font-family: var(--font-heading);
+.textWrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.textWrap h3 {
+  font-family: var(--font-heading), sans-serif;
   font-size: 1.25rem;
+  font-weight: 600;
   color: var(--color-dark);
-  margin-bottom: 12px;
+  margin: 0 0 4px 0;
+  letter-spacing: -0.01em;
 }
 
-.card p {
-  font-size: 0.92rem;
-  line-height: 1.7;
+.textWrap p {
+  font-size: 0.94rem;
+  line-height: 1.5;
   color: var(--color-text-muted);
+  margin: 0;
 }
 
-@keyframes cardFadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 1024px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 580px) {
-  .grid {
+/* ===== BREAKPOINTS FOR RESPONSIVENESS ===== */
+@media (max-width: 992px) {
+  .inner {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 44px;
+  }
+
+  .mainImage {
+    height: 380px;
+  }
+}
+
+@media (max-width: 560px) {
+  .mainImage {
+    height: 300px;
+  }
+
+  .listItem {
+    align-items: flex-start;
   }
 }

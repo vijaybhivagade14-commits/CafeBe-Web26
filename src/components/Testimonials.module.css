@@ -1,17 +1,20 @@
-/* ===== TESTIMONIALS ===== */
+/* ===== TESTIMONIALS SECTION ===== */
 .section {
   padding: var(--section-padding);
+  padding-top: 80px;
+  padding-bottom: 80px;
   background: var(--color-cream);
+  overflow: hidden;
 }
 
 .inner {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
 .header {
   text-align: center;
-  margin-bottom: 48px;
+  margin-bottom: 70px;
 }
 
 .kicker {
@@ -21,13 +24,14 @@
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--color-gold);
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .title {
   font-family: var(--font-heading);
-  font-size: clamp(30px, 5vw, 48px);
+  font-size: clamp(32px, 5vw, 48px);
   color: var(--color-dark);
+  margin: 0;
 }
 
 .title em {
@@ -35,112 +39,144 @@
   color: var(--color-gold-dim);
 }
 
-/* Carousel */
-.carousel {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.navBtn {
-  flex-shrink: 0;
+.carouselWrap {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
+}
+
+/* 💥 CARD WITH PROPER VISIBLE BORDER LINE */
+.card {
+  position: relative;
+  background: var(--color-white, #ffffff);
+  border-radius: 24px;
+  padding: 64px 48px 40px 48px;
+  width: 100%;
+  max-width: 720px;
+
+  /* Clear visible border line added */
+  border: 1.5px solid rgba(216, 165, 97, 0.4);
+
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.06);
+  animation: slideFadeIn 0.5s ease-in-out;
+}
+
+/* Circle Half Inside & Half Outside with Smooth Ring Cutout */
+.avatarWrap {
+  position: absolute;
+  top: -48px;
+  left: 44px;
+  width: 96px;
+  height: 96px;
   border-radius: 50%;
-  border: 1px solid rgba(26, 20, 15, 0.12);
-  color: var(--color-dark);
-  font-size: 20px;
-  transition: all var(--transition-fast);
+  background: var(--color-white, #ffffff);
+  padding: 5px;
+
+  /* Double shadow ring effect around embedded circle cutout */
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.12),
+    0 0 0 1.5px rgba(216, 165, 97, 0.3);
+  /* Border ring connection */
+
+  box-sizing: border-box;
+  z-index: 5;
 }
 
-.navBtn:hover {
-  background: var(--color-dark);
-  color: var(--color-white);
-  border-color: var(--color-dark);
+.avatarImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid rgba(26, 20, 15, 0.1);
 }
 
-/* Slide */
-.slide {
-  flex: 1;
-  text-align: center;
-  padding: 40px 32px;
-  background: var(--color-white);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-md);
-  animation: slideFadeIn 0.5s ease;
-}
-
-.quote {
-  font-family: var(--font-heading);
-  font-size: 72px;
-  line-height: 0.6;
-  color: var(--color-gold);
-  margin-bottom: 12px;
-}
-
-.text {
-  font-size: 1.1rem;
-  line-height: 1.8;
-  color: var(--color-text-body);
-  margin-bottom: 20px;
-  font-style: italic;
-}
-
-/* Stars */
-.stars {
+.cardBody {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  margin-top: 8px;
+}
+
+.guestName {
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: var(--color-dark);
+  margin: 0 0 4px 0;
+}
+
+.guestRole {
+  font-size: 0.88rem;
+  color: var(--color-gold-dim, #a3783f);
+  margin-bottom: 14px;
+  font-weight: 500;
+}
+
+.rating {
+  display: flex;
   gap: 4px;
-  margin-bottom: 24px;
+  margin-bottom: 18px;
 }
 
 .starFilled {
-  color: #f0c040;
-  fill: #f0c040;
-  font-size: 18px;
+  color: #e6a100;
+  fill: #e6a100;
+  font-size: 16px;
 }
 
 .starEmpty {
-  color: #d9d3cb;
-  font-size: 18px;
+  color: #d1c7bd;
+  font-size: 16px;
 }
 
-/* Author */
-.author {
+.message {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--color-text-muted, #554e48);
+  font-style: italic;
+  margin: 0;
+}
+
+/* Nav Buttons */
+.navBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid rgba(216, 165, 97, 0.3);
+  background: var(--color-white, #ffffff);
+  color: var(--color-dark);
+  font-size: 22px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
 }
 
-.avatar {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid rgba(216, 165, 97, 0.3);
+.navBtn:hover {
+  background: #7f5539;
+  color: #ffffff;
+  border-color: #7f5539;
 }
 
-.author strong {
-  display: block;
-  font-family: var(--font-heading);
-  font-size: 1.05rem;
-  color: var(--color-dark);
+.prevBtn {
+  left: -25px;
 }
 
-.author span {
-  font-size: 0.8rem;
-  color: var(--color-text-muted);
+.nextBtn {
+  right: -25px;
 }
 
 /* Dots */
 .dots {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
   margin-top: 32px;
 }
 
@@ -149,39 +185,56 @@
   height: 10px;
   border-radius: 50%;
   border: none;
-  background: rgba(26, 20, 15, 0.15);
+  background: rgba(26, 20, 15, 0.18);
   cursor: pointer;
-  transition: all var(--transition-fast);
-  padding: 0;
+  transition: all 0.3s ease;
 }
 
 .dotActive {
   background: var(--color-gold);
-  transform: scale(1.3);
+  width: 26px;
+  border-radius: 10px;
 }
 
+/* Smooth Slide Animation when changing slide */
 @keyframes slideFadeIn {
   from {
-    opacity: 0;
-    transform: translateX(20px);
+    opacity: 0.3;
+    transform: translateX(12px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
   }
 }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 640px) {
-  .carousel {
-    flex-direction: column;
+/* Responsive */
+@media (max-width: 768px) {
+  .card {
+    padding: 50px 24px 32px 24px;
+    margin: 0 10px;
   }
 
-  .navBtn {
-    display: none;
+  .avatarWrap {
+    left: 50%;
+    transform: translateX(-50%);
   }
 
-  .slide {
-    padding: 32px 20px;
+  .cardBody {
+    text-align: center;
+    margin-top: 32px;
+  }
+
+  .rating {
+    justify-content: center;
+  }
+
+  .prevBtn {
+    left: -10px;
+  }
+
+  .nextBtn {
+    right: -10px;
   }
 }

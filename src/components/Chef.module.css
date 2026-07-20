@@ -1,6 +1,7 @@
 /* ===== CHEF / TEAM SECTION ===== */
 .section {
   padding: var(--section-padding);
+  padding-top: 40px;
   background: var(--color-dark);
   color: var(--color-text-light);
 }
