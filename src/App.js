@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import ScrollTop from './components/ScrollTop';
 import Home from './pages/Home';
@@ -9,11 +9,17 @@ import Contact from './pages/Contact';
 import Menu from './pages/Menu';
 import Reservation from './pages/Reservation';
 
-export default function App() {
+// Ek naya component banaya hai taaki hum URL (location) check kar sakein
+function MainLayout() {
+  const location = useLocation();
+  // Check karega ki kya user Home page par hai
+  const isHomePage = location.pathname === '/';
+
   return (
-    <Router>
+    <>
       <Navbar />
-      <main className="app-main">
+      {/* Agar Home page nahi hai, toh automatically 100px ki padding add ho jayegi taaki content Navbar ke andar na chhhipe */}
+      <main className="app-main" style={{ paddingTop: isHomePage ? '0px' : '100px' }}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/menu" element={<Menu />} />
@@ -25,6 +31,14 @@ export default function App() {
         </Routes>
       </main>
       <ScrollTop />
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <Router>
+      <MainLayout />
     </Router>
   );
 }

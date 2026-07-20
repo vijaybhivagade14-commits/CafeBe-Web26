@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiArrowDown } from 'react-icons/fi';
 import styles from './Hero.module.css';
@@ -6,25 +6,90 @@ import styles from './Hero.module.css';
 const Hero = () => {
   const heroRef = useRef(null);
 
+  // Track BOTH mouse position and scroll position
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [scrollY, setScrollY] = useState(0); // <--- New state for scrolling
+
   useEffect(() => {
     const el = heroRef.current;
     if (el) {
       el.classList.add(styles.visible);
     }
+
+    // <--- New: Listen for page scrolling
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Cleanup listener when component unmounts
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Calculate mouse movement
+  const handleMouseMove = (e) => {
+    const x = (e.clientX - window.innerWidth / 2) * 0.04;
+    const y = (e.clientY - window.innerHeight / 2) * 0.04;
+    setMousePos({ x, y });
+  };
+
   return (
-    <section className={styles.hero} ref={heroRef} aria-label="Welcome to Cafe BE">
-      {/* Background Image */}
+    <section
+      className={styles.hero}
+      ref={heroRef}
+      onMouseMove={handleMouseMove}
+      aria-label="Welcome to Cafe BE"
+    >
+      {/* Static Dark Background Image */}
+      {/* Premium Background Color is now handled in CSS (.hero) */}
       <div className={styles.bgWrap}>
-        {/* Example: Changing to a pizza background */}
-        <img src="/images/pizza.png" alt="" className={styles.bgImage} aria-hidden="true" />
-        <div className={styles.overlay} />
+        {/* Deleted the image and overlay so the beautiful gradient shows through */}
       </div>
 
-      {/* Content */}
+
+      {/* Floating Parallax Food */}
+      <div className={styles.parallaxWrap}>
+
+        {/* Left side pizza */}
+        <div
+          className={styles.floatingWrapper}
+          style={{ transform: `translate(${mousePos.x}px, ${mousePos.y + scrollY * 0.15}px) rotate(${mousePos.x * 0.2}deg)` }}
+        >
+          <img src="/images/pizza.png" alt="Pizza" className={`${styles.floatingFood} ${styles.pizzaImg}`} aria-hidden="true" />
+        </div>
+
+        {/* Right side burger */}
+        <div
+          className={styles.floatingWrapper}
+          style={{ transform: `translate(${mousePos.x * -1}px, ${mousePos.y * -1 + scrollY * 0.25}px) rotate(${mousePos.x * -0.2}deg)` }}
+        >
+          <img src="/images/Burger-panner.png" alt="Burger" className={`${styles.floatingFood} ${styles.burgerImg}`} aria-hidden="true" />
+        </div>
+
+        {/* NEW: Top Right Leaves (vege2.png) */}
+        <div
+          className={styles.floatingWrapper}
+          /* I gave the leaves slightly different speed numbers so it looks like it's floating at a different distance! */
+          style={{ transform: `translate(${mousePos.x * -0.6}px, ${mousePos.y * -0.6 + scrollY * 0.1}px) rotate(${mousePos.x * 0.15}deg)` }}
+        >
+          <img
+            src="/images/vege2.png"
+            alt="Leaves"
+            className={`${styles.floatingFood} ${styles.leavesImg}`}
+            aria-hidden="true"
+          />
+        </div>
+
+      </div>
+
+
+
+      {/* Content (Leave everything below this exactly as it was) */}
       <div className={styles.content}>
         <span className={styles.badge}>★ Award-Winning Café Since 2018</span>
+
+
         <h1 className={styles.title}>
           Crafting <em>moments</em> with every cup & every plate.
         </h1>

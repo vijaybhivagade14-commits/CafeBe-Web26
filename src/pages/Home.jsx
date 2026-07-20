@@ -14,15 +14,16 @@ import Footer from '../components/Footer';
 const Home = () => (
   <>
     <Hero />
-    <WhyChoose />
+    {/* <WhyChoose /> */}
     <Stats />
+    <WhyChoose />
     <SpecialMenu />
     <Offers />
-    <Chef />
+    {/* <Chef /> */}
     <Gallery />
     <Testimonials />
-    <Reservation />
-    <FAQ />
+    {/* <Reservation /> */}
+    {/* <FAQ /> */}
     <Footer />
   </>
 );

@@ -18,7 +18,8 @@ const Footer = () => {
 
   return (
     <footer className={styles.footer}>
-      <div className={styles.inner}>
+      {/* NEW: Direct image tag for the cup */}
+      <img src="/images/7.jpg" alt="Coffee Cup" className={styles.cupImage} />      <div className={styles.inner}>
         {/* Col 1 — Brand */}
         <div className={styles.col}>
           <div className={styles.brand}>

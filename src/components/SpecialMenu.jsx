@@ -25,9 +25,27 @@ const specials = [
     badge: 'New',
   },
 ];
-
 const SpecialMenu = () => (
-  <section className={styles.section} aria-label="Special dishes">
+  <section className={styles.wrapper} aria-label="Special Menu">
+
+    {/* NEW: Experience Today Banner (From 1st Image) */}
+    {/* <div className={styles.bannerContent}>
+      <div className={styles.bannerKicker}>✦ Your Table Awaits</div>
+      <h2 className={styles.bannerTitle}>Experience Cafe BE Today</h2>
+      <p className={styles.bannerSubtitle}>
+        Step into our café, sip the finest blends, and feel the warmth. Cafe BE is more than
+        coffee — it's a moment worth living.
+      </p>
+      <div className={styles.bannerActions}>
+        <button className={styles.btnSolid}>Grab Your Cup ↗</button>
+        <button className={styles.btnOutline}>See Café Hours ↗</button>
+      </div>
+    </div> */}
+
+    {/* Elegant Divider between the two sections */}
+    <div className={styles.bannerDivider}></div>
+
+    {/* ORIGINAL: Signature Dishes Grid (From 2nd Image) */}
     <div className={styles.inner}>
       <div className={styles.header}>
         <span className={styles.kicker}>Chef's Recommendation</span>
@@ -38,14 +56,13 @@ const SpecialMenu = () => (
           Hand-selected by our head chef — these are the dishes our guests come back for again and again.
         </p>
       </div>
+
       <div className={styles.grid}>
         {specials.map((item, i) => (
-          <article key={i} className={styles.card}>
+          <div key={i} className={styles.card}>
             <div className={styles.imgWrap}>
+              <span className={styles.badge}>☆ {item.badge}</span>
               <img src={item.img} alt={item.name} loading="lazy" />
-              <span className={styles.badge}>
-                <FiStar /> {item.badge}
-              </span>
             </div>
             <div className={styles.body}>
               <div className={styles.top}>
@@ -54,7 +71,7 @@ const SpecialMenu = () => (
               </div>
               <p>{item.desc}</p>
             </div>
-          </article>
+          </div>
         ))}
       </div>
     </div>

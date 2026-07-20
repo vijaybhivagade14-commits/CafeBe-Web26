@@ -3,23 +3,23 @@ import { FiSearch, FiX } from 'react-icons/fi';
 import styles from './Menu.module.css';
 
 const items = [
-  { id: 1, name: 'Cold Coffee', price: '180', category: 'Coffee', img: '/images/a.jpg', desc: 'Chilled espresso with house-made milk foam and a hint of vanilla.' },
-  { id: 2, name: 'Cafe Burger', price: '260', category: 'Kitchen', img: '/images/f.jpg', desc: 'Juicy patty with caramelized onions, cheddar, and our special sauce.' },
-  { id: 3, name: 'Daily Dessert', price: '150', category: 'Sweet', img: '/images/c1.webp', desc: 'Seasonal dessert prepared fresh every morning by our pastry chef.' },
-  { id: 4, name: 'Pasta Primavera', price: '310', category: 'Kitchen', img: '/images/b.jpg', desc: 'Fresh pasta tossed with garden vegetables and olive oil pesto.' },
-  { id: 5, name: 'Cappuccino', price: '140', category: 'Coffee', img: '/images/d.jpg', desc: 'Rich espresso topped with velvety steamed milk and micro-foam art.' },
-  { id: 6, name: 'Grilled Sandwich', price: '190', category: 'Kitchen', img: '/images/e.jpg', desc: 'Toasted sourdough with mozzarella, sun-dried tomatoes, and basil.' },
-  { id: 7, name: 'Fresh Juice', price: '120', category: 'Drinks', img: '/images/g.jpg', desc: 'Cold-pressed seasonal fruit juice — no sugar, no preservatives.' },
-  { id: 8, name: 'Chocolate Brownie', price: '130', category: 'Sweet', img: '/images/c3.jpg', desc: 'Warm dark chocolate brownie with a molten center and ice cream.' },
-  { id: 9, name: 'Iced Latte', price: '160', category: 'Coffee', img: '/images/c2.jpg', desc: 'Double-shot espresso poured over ice with oat or regular milk.' },
-  { id: 10, name: 'Caesar Salad', price: '220', category: 'Kitchen', img: '/images/h.jpg', desc: 'Crisp romaine lettuce with parmesan, croutons, and house dressing.' },
-  { id: 11, name: 'Mango Smoothie', price: '150', category: 'Drinks', img: '/images/c4.jpg', desc: 'Creamy Alphonso mango blended with yogurt and a touch of honey.' },
-  { id: 12, name: 'Tiramisu', price: '210', category: 'Sweet', img: '/images/d1.jpg', desc: 'Classic Italian dessert with mascarpone, espresso, and cocoa.' },
+  { id: 1, name: 'Cold Coffee', price: '180', category: 'Coffee', img: '/images/a.jpg', desc: 'Chilled espresso with house-made milk foam and a hint of vanilla.', badges: ['Chef\'s Choice'] },
+  { id: 2, name: 'Cafe Burger', price: '260', category: 'Kitchen', img: '/images/f.jpg', desc: 'Juicy patty with caramelized onions, cheddar, and our special sauce.', badges: [] },
+  { id: 3, name: 'Daily Dessert', price: '150', category: 'Sweet', img: '/images/c1.webp', desc: 'Seasonal dessert prepared fresh every morning by our pastry chef.', badges: ['Vegan'] },
+  { id: 4, name: 'Pasta Primavera', price: '310', category: 'Kitchen', img: '/images/b.jpg', desc: 'Fresh pasta tossed with garden vegetables and olive oil pesto.', badges: ['Vegan', 'Chef\'s Choice'] },
+  { id: 5, name: 'Cappuccino', price: '140', category: 'Coffee', img: '/images/d.jpg', desc: 'Rich espresso topped with velvety steamed milk and micro-foam art.', badges: [] },
+  { id: 6, name: 'Grilled Sandwich', price: '190', category: 'Kitchen', img: '/images/e.jpg', desc: 'Toasted sourdough with mozzarella, sun-dried tomatoes, and basil.', badges: ['Gluten-Free'] },
+  { id: 7, name: 'Fresh Juice', price: '120', category: 'Drinks', img: '/images/g.jpg', desc: 'Cold-pressed seasonal fruit juice — no sugar, no preservatives.', badges: ['Vegan', 'Gluten-Free'] },
+  { id: 8, name: 'Chocolate Brownie', price: '130', category: 'Sweet', img: '/images/c3.jpg', desc: 'Warm dark chocolate brownie with a molten center and ice cream.', badges: ['Chef\'s Choice'] },
+  { id: 9, name: 'Iced Latte', price: '160', category: 'Coffee', img: '/images/c2.jpg', desc: 'Double-shot espresso poured over ice with oat or regular milk.', badges: [] },
+  { id: 10, name: 'Caesar Salad', price: '220', category: 'Kitchen', img: '/images/h.jpg', desc: 'Crisp romaine lettuce with parmesan, croutons, and house dressing.', badges: ['Gluten-Free'] },
+  { id: 11, name: 'Mango Smoothie', price: '150', category: 'Drinks', img: '/images/c4.jpg', desc: 'Creamy Alphonso mango blended with yogurt and a touch of honey.', badges: [] },
+  { id: 12, name: 'Tiramisu', price: '210', category: 'Sweet', img: '/images/d1.jpg', desc: 'Classic Italian dessert with mascarpone, espresso, and cocoa.', badges: ['Chef\'s Choice'] },
 ];
 
 const categories = ['All', 'Coffee', 'Kitchen', 'Drinks', 'Sweet'];
 
-const MenuSection = () => {
+const MenuSection = ({ isDetailedView = false }) => {
   const [query, setQuery] = useState('');
   const [activeCat, setActiveCat] = useState('All');
 
@@ -73,20 +73,46 @@ const MenuSection = () => {
       </div>
 
       {/* Grid */}
-      <div className={styles.grid}>
+      <div className={isDetailedView ? styles.detailedGrid : styles.grid}>
         {filtered.map((item, idx) => (
-          <article key={item.id} className={styles.card} style={{ animationDelay: `${idx * 0.06}s` }}>
-            <div className={styles.cardImgWrap}>
-              <img src={item.img} alt={item.name} loading="lazy" />
-              <span className={styles.cardTag}>{item.category}</span>
-            </div>
-            <div className={styles.cardBody}>
-              <div className={styles.cardTop}>
-                <h3>{item.name}</h3>
-                <span className={styles.price}>₹{item.price}</span>
-              </div>
-              <p>{item.desc}</p>
-            </div>
+          <article key={item.id} className={isDetailedView ? styles.detailedCard : styles.card} style={{ animationDelay: `${idx * 0.06}s` }}>
+            {isDetailedView ? (
+              <>
+                {/* Premium Detailed Layout for Menu Page */}
+                <div className={styles.detailedImgWrap}>
+                  <img src={item.img} alt={item.name} loading="lazy" />
+                </div>
+                <div className={styles.detailedBody}>
+                  <div className={styles.detailedTop}>
+                    <div className={styles.titleWrap}>
+                      <h3>{item.name}</h3>
+                      <div className={styles.detailedBadges}>
+                        {item.badges?.includes("Vegan") && <span className={styles.badge} title="Vegan">🍃</span>}
+                        {item.badges?.includes("Gluten-Free") && <span className={styles.badge} title="Gluten-Free">🌾</span>}
+                        {item.badges?.includes("Chef's Choice") && <span className={styles.badgeChef} title="Chef's Choice">👑 Chef's Choice</span>}
+                      </div>
+                    </div>
+                    <span className={styles.detailedPrice}>₹{item.price}</span>
+                  </div>
+                  <p>{item.desc}</p>
+                </div>
+              </>
+            ) : (
+              <>
+                {/* Simple Card Layout for Home Page */}
+                <div className={styles.cardImgWrap}>
+                  <img src={item.img} alt={item.name} loading="lazy" />
+                  <span className={styles.cardTag}>{item.category}</span>
+                </div>
+                <div className={styles.cardBody}>
+                  <div className={styles.cardTop}>
+                    <h3>{item.name}</h3>
+                    <span className={styles.price}>₹{item.price}</span>
+                  </div>
+                  <p>{item.desc}</p>
+                </div>
+              </>
+            )}
           </article>
         ))}
         {filtered.length === 0 && (
