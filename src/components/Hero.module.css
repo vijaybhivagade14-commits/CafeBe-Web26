@@ -338,6 +338,38 @@
   animation: bounce 2s infinite;
 }
 
+/* ===== ADDITIONAL RESPONSIVE BREAKPOINTS ===== */
+
+/* Tablets & Small Laptops */
+@media (max-width: 1024px) {
+  .title {
+    font-size: clamp(32px, 6vw, 56px);
+  }
+  .pizzaImg {
+    width: 40vw; 
+    left: -5%;
+  }
+  .burgerImg {
+    width: 30vw;
+    right: -2%;
+  }
+}
+
+/* Tablets (Portrait) */
+@media (max-width: 768px) {
+  /* Hide floating food on smaller screens to avoid overlapping text */
+  .pizzaImg, .burgerImg, .leavesImg {
+    display: none; 
+  }
+  
+  .statsRow {
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+  }
+}
+
+
 /* Keyframes */
 @keyframes heroFadeUp {
   from {
