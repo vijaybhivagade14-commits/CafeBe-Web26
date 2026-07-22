@@ -134,9 +134,9 @@
   width: 100%;
   height: 100%;
   position: relative;
-  border-radius: 20px;
+  /* border-radius: 20px; */
   overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  /* box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08); */
 }
 
 .edImageWrap::after {
@@ -156,7 +156,7 @@
 }
 
 .edImageWrap:hover .edImage {
-  transform: scale(1.05);
+  /* transform: scale(1.05); */
 }
 
 .edContent {

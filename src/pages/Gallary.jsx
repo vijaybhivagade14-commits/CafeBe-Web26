@@ -25,7 +25,7 @@ const Gallary = () => (
         {/* Editorial Block 1 (Image Left, Text Right) */}
         <div className={styles.editorialBlock}>
           <div className={styles.edImageWrap}>
-            <img src="/images/d.jpg" alt="Signature Coffee" className={styles.edImage} />
+            <img src="/images/pizza1.png" alt="Signature Coffee" className={styles.edImage} />
           </div>
           <div className={styles.edContent}>
             <span className={styles.edKicker}>The Craft</span>
@@ -50,7 +50,7 @@ const Gallary = () => (
             </p>
           </div>
           <div className={styles.edImageWrap}>
-            <img src="/images/2.jpg" alt="Cozy Interior" className={styles.edImage} />
+            <img src="/images/tea-bread.png" alt="Cozy Interior" className={styles.edImage} />
           </div>
         </div>
 
