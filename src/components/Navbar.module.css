@@ -177,7 +177,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    /* Forces links to start from the top so they aren't cut off */
     gap: 0;
     padding: 100px 24px 40px;
     background: rgba(26, 20, 15, 0.98);
@@ -187,7 +188,10 @@
     visibility: hidden;
     transform: translateY(-10px);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+    /* Allows scrolling on very small mobile screens! */
   }
+
 
   .navLinksOpen {
     opacity: 1;
@@ -214,5 +218,18 @@
 
   .brandName {
     font-size: 28px;
+  }
+}
+
+/* Extra small mobile adjustments */
+@media (max-width: 480px) {
+  .navLinks {
+    padding-top: 80px;
+    /* Reduces top gap on tiny screens */
+  }
+
+  .link {
+    padding: 14px 0;
+    /* Brings the links slightly closer together */
   }
 }
