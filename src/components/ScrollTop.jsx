@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { FiArrowUp } from 'react-icons/fi';
+import React, { useState, useEffect } from 'react';
+// (We removed FiArrowUp because we are using your image now)
 import styles from './ScrollTop.module.css';
 
 const ScrollTop = () => {
@@ -21,7 +21,8 @@ const ScrollTop = () => {
       onClick={scrollToTop}
       aria-label="Scroll to top"
     >
-      <FiArrowUp />
+      {/* Here is your fork image instead of the arrow! */}
+      <img src="/images/spoon3.png" alt="Scroll Up" className={styles.forkIcon} />
     </button>
   );
 };

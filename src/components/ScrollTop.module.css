@@ -33,3 +33,17 @@
   transform: translateY(-4px);
   box-shadow: 0 10px 28px rgba(216, 165, 97, 0.5);
 }
+
+/* Size and styling for the fork image */
+.forkIcon {
+  width: 42px;
+  /* Adjust this number to make the fork bigger or smaller */
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+/* Optional: Make the fork point up a little more when you hover! */
+.button:hover .forkIcon {
+  transform: translateY(-2px);
+}
