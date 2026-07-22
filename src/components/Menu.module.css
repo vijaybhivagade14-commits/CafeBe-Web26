@@ -2,7 +2,12 @@
 .page {
   padding: var(--section-padding);
   background: var(--color-cream-2);
+  width: 100%;
+  overflow-x: hidden;
+  /* This stops the white space on the right! */
+  box-sizing: border-box;
 }
+
 
 .sectionHeader {
   text-align: center;
@@ -41,13 +46,17 @@
 
 /* Controls */
 .controls {
-  max-width: var(--container-max);
+  width: 100%;
+  max-width: var(--container-max, 1200px);
   margin: 0 auto 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  padding: 0 16px;
+  box-sizing: border-box;
 }
+
 
 .searchWrap {
   position: relative;
@@ -104,7 +113,9 @@
   flex-wrap: wrap;
   gap: 12px;
   justify-content: center;
+  width: 100%;
 }
+
 
 .tab {
   --flow-bg-color: #000000;
@@ -296,6 +307,9 @@
   gap: 32px;
   max-width: 1000px;
   margin: 0 auto;
+  padding: 0 16px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .detailedCard {
@@ -444,8 +458,16 @@
     overflow-x: auto;
     flex-wrap: nowrap;
     -webkit-overflow-scrolling: touch;
-    padding-bottom: 4px;
+    padding-bottom: 8px;
+    scrollbar-width: none;
+    /* Hides scrollbar on Firefox */
   }
+
+  /* Hides scrollbar on Chrome/Safari/Edge */
+  .tabs::-webkit-scrollbar {
+    display: none;
+  }
+
 
   .tab {
     white-space: nowrap;
