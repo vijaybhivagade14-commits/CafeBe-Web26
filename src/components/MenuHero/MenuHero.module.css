@@ -26,6 +26,23 @@
     background-attachment: fixed;
     /* Ye magic property hai jo Parallax scroll effect deti hai! */
     z-index: 1;
+    animation: slowZoomOut 20s ease-out forwards;
+
+}
+
+@keyframes slowZoomOut {
+    from {
+        /* Zoom in slightly for immersive feel */
+        transform: scale(1.2);
+        /* Pan slightly up so top is visible */
+        object-position: center 40%;
+    }
+
+    to {
+        /* Zoom out slowly to original or slightly zoomed out */
+        transform: scale(1);
+        object-position: center 60%;
+    }
 }
 
 /* Dark gradient overlay for readability */
