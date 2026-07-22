@@ -10,12 +10,14 @@
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #d8a561, #c4923e);
+  /* background: linear-gradient(135deg, #d8a561, #c4923e);
+   */
+  background: transparent;
   color: var(--color-dark);
   font-size: 20px;
   border: none;
   cursor: pointer;
-  box-shadow: 0 6px 20px rgba(216, 165, 97, 0.35);
+  /* box-shadow: 0 6px 20px rgba(216, 165, 97, 0.35); */
   opacity: 0;
   visibility: hidden;
   transform: translateY(12px);
@@ -36,7 +38,7 @@
 
 /* Size and styling for the fork image */
 .forkIcon {
-  width: 42px;
+  width: 65px;
   /* Adjust this number to make the fork bigger or smaller */
   height: auto;
   object-fit: contain;
