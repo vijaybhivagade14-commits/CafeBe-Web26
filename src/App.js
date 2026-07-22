@@ -13,7 +13,7 @@ import Reservation from './pages/Reservation';
 function MainLayout() {
   const location = useLocation();
   // Check karega ki kya user in pages par hai jahan Hero section hai (taaki gap na aaye)
-  const noPaddingPages = ['/', '/gallary'];
+  const noPaddingPages = ['/', '/gallary', '/about', '/reservation', '/contact'];
   const isNoPaddingPage = noPaddingPages.includes(location.pathname);
 
   return (
