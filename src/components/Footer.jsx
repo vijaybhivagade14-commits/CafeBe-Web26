@@ -56,7 +56,7 @@ const Footer = () => {
           <h4 className={styles.colTitle}>Contact Us</h4>
           <div className={styles.contactList}>
             <p><FiMapPin className={styles.contactIcon} /> Level 13, 2 Elizabeth St, Nagpur</p>
-            <p><FiPhone className={styles.contactIcon} /> +91 80000 00000</p>
+            <p><FiPhone className={styles.contactIcon} /> +91 8080 146 176</p>
             <p><FiMail className={styles.contactIcon} /> hello@cafebe.in</p>
             <p className={styles.hours}>Open daily: 10am — 10:30pm</p>
           </div>

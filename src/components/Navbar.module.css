@@ -156,6 +156,7 @@
 }
 
 /* ===== MOBILE ===== */
+/* ===== MOBILE ===== */
 @media (max-width: 860px) {
   .navbar {
     min-height: 70px;
@@ -173,11 +174,12 @@
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
+    height: 100vh;
+    /* FIX: Added height 100vh instead of bottom: 0 */
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 0;
     padding: 100px 24px 40px;
     background: rgba(26, 20, 15, 0.98);
@@ -187,6 +189,7 @@
     visibility: hidden;
     transform: translateY(-10px);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
   }
 
   .navLinksOpen {
@@ -214,5 +217,19 @@
 
   .brandName {
     font-size: 28px;
+  }
+}
+
+
+/* Extra small mobile adjustments */
+@media (max-width: 480px) {
+  .navLinks {
+    padding-top: 80px;
+    /* Reduces top gap on tiny screens */
+  }
+
+  .link {
+    padding: 14px 0;
+    /* Brings the links slightly closer together */
   }
 }

@@ -257,10 +257,36 @@
 }
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 900px) {
+
+/* Tablets & Small Laptops */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobiles */
+@media (max-width: 768px) {
   .grid {
     grid-template-columns: 1fr;
     max-width: 500px;
     margin: 0 auto;
   }
+
+  .wrapper {
+    padding: 30px 16px 40px;
+  }
+
+  .bannerTitle {
+    font-size: clamp(28px, 5vw, 42px);
+  }
 }
+
+/* ===== RESPONSIVE ===== */
+/* @media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+} */

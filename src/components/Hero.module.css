@@ -6,9 +6,9 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  padding-top: 10%;
+  box-sizing: border-box;
 
-  /* Add this premium Deep Midnight/Teal gradient */
-  /* background: radial-gradient(circle at 50% 30%, #173638 0%, #0d1f21 50%, #050a0b 100%); */
 }
 
 /* Background */
@@ -337,6 +337,55 @@
 .scrollArrow {
   animation: bounce 2s infinite;
 }
+
+/* ===== ADDITIONAL RESPONSIVE BREAKPOINTS ===== */
+
+/* Tablets & Small Laptops */
+@media (max-width: 1024px) {
+  .title {
+    font-size: clamp(32px, 6vw, 56px);
+  }
+
+  .pizzaImg {
+    width: 40vw;
+    left: -5%;
+  }
+
+  .burgerImg {
+    width: 30vw;
+    right: -2%;
+  }
+}
+
+/* Tablets (Portrait) */
+/* Tablets (Portrait) & Mobile */
+@media (max-width: 768px) {
+
+  /* Hide ONLY food on smaller screens to avoid overlapping text */
+  .pizzaImg,
+  .burgerImg {
+    display: none;
+  }
+
+  /* Keep leaves visible on mobile and adjust position */
+  .leavesImg {
+    display: block;
+    width: 35vw;
+    max-width: 150px;
+    top: 5%;
+    right: -2%;
+    opacity: 0.8;
+    /* Slightly transparent so it doesn't distract from text */
+  }
+
+  .statsRow {
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+  }
+}
+
+
 
 /* Keyframes */
 @keyframes heroFadeUp {
