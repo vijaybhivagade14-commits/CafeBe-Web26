@@ -6,7 +6,8 @@ import styles from './Gallary.module.css';
 const Gallary = () => (
   <div className={styles.page}>
     {/* Hero Banner */}
-    <section className={styles.heroSection} style={{ backgroundImage: 'url(/images/6.jpg)' }}>
+    {/* Hero Banner */}
+    <section className={styles.heroSection} style={{ '--hero-bg': 'url(/images/6.jpg)' }}>
       <div className={styles.heroOverlay} />
       <div className={styles.heroContent}>
         <span className={styles.kicker}>Gallery</span>
@@ -20,7 +21,7 @@ const Gallary = () => (
     {/* Premium Editorial Section */}
     <section className={styles.editorialSection}>
       <div className={styles.editorialContainer}>
-        
+
         {/* Editorial Block 1 (Image Left, Text Right) */}
         <div className={styles.editorialBlock}>
           <div className={styles.edImageWrap}>
@@ -30,8 +31,8 @@ const Gallary = () => (
             <span className={styles.edKicker}>The Craft</span>
             <h2 className={styles.edTitle}>The Perfect <em>Brew</em></h2>
             <p className={styles.edDesc}>
-              Every cup we serve is a testament to our dedication to the art of coffee. 
-              From the carefully selected beans to the precise temperature of the milk, 
+              Every cup we serve is a testament to our dedication to the art of coffee.
+              From the carefully selected beans to the precise temperature of the milk,
               we ensure that every sip is an experience worth savoring.
             </p>
           </div>
@@ -43,8 +44,8 @@ const Gallary = () => (
             <span className={styles.edKicker}>The Ambiance</span>
             <h2 className={styles.edTitle}>Rustic <em>Elegance</em></h2>
             <p className={styles.edDesc}>
-              Our space is designed to be your sanctuary. Whether you're here for a quiet 
-              morning with a book, or an evening gathering with friends, our warm lighting 
+              Our space is designed to be your sanctuary. Whether you're here for a quiet
+              morning with a book, or an evening gathering with friends, our warm lighting
               and cozy interiors provide the perfect backdrop for your memories.
             </p>
           </div>
