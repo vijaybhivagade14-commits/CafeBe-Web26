@@ -12,14 +12,15 @@ import Reservation from './pages/Reservation';
 // Ek naya component banaya hai taaki hum URL (location) check kar sakein
 function MainLayout() {
   const location = useLocation();
-  // Check karega ki kya user Home page par hai
-  const isHomePage = location.pathname === '/';
+  // Check karega ki kya user in pages par hai jahan Hero section hai (taaki gap na aaye)
+  const noPaddingPages = ['/', '/gallary', '/about', '/reservation', '/contact'];
+  const isNoPaddingPage = noPaddingPages.includes(location.pathname);
 
   return (
     <>
       <Navbar />
-      {/* Agar Home page nahi hai, toh automatically 100px ki padding add ho jayegi taaki content Navbar ke andar na chhhipe */}
-      <main className="app-main" style={{ paddingTop: isHomePage ? '0px' : '100px' }}>
+      {/* Agar page noPaddingPages list me nahi hai, toh automatically 100px ki padding add ho jayegi */}
+      <main className="app-main" style={{ paddingTop: isNoPaddingPage ? '0px' : '100px' }}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/menu" element={<Menu />} />
