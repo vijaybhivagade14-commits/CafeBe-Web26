@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
+import ReCAPTCHA from 'react-google-recaptcha';
 import { FiMapPin, FiPhone, FiMail, FiClock, FiSend, FiCheckCircle, FiAlertCircle } from 'react-icons/fi';
 import Footer from '../../components/Footer/Footer';
 import styles from './Contact.module.css';
@@ -19,8 +20,10 @@ function validate(values) {
 const Contact = () => {
   const [values, setValues] = useState(initialState);
   const [errors, setErrors] = useState({});
-  const [status, setStatus] = useState(null); // { type: 'success' | 'error', text: string }
+  const [status, setStatus] = useState(null);
   const [isSending, setIsSending] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState(null);
+  const recaptchaRef = useRef(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -34,6 +37,11 @@ const Contact = () => {
     if (Object.keys(errs).length) {
       setErrors(errs);
       setStatus(null);
+      return;
+    }
+
+    if (!captchaToken) {
+      setStatus({ type: 'error', text: 'Please verify that you are not a robot.' });
       return;
     }
 
@@ -55,6 +63,8 @@ const Contact = () => {
 
       setStatus({ type: 'success', text: "Message sent successfully! We'll get back to you soon." });
       setValues(initialState);
+      recaptchaRef.current.reset();
+      setCaptchaToken(null);
     } catch (err) {
       console.error('EmailJS error:', err);
       setStatus({ type: 'error', text: 'Something went wrong. Please try again or email us directly.' });
@@ -96,7 +106,7 @@ const Contact = () => {
             <div className={styles.infoCard}>
               <div className={styles.infoIconWrap}><FiPhone /></div>
               <h3>Call Us</h3>
-              <p>+91 7219 793033<br />+91 80801 46176</p>
+              <p>+91 80000 00000<br />+91 80801 46176</p>
             </div>
 
             <div className={styles.infoCard}>
@@ -181,6 +191,15 @@ const Contact = () => {
                     disabled={isSending}
                   />
                   {errors.message && <span className={styles.errorText}>{errors.message}</span>}
+                </div>
+
+                <div className={styles.field}>
+                  <ReCAPTCHA
+                    ref={recaptchaRef}
+                    sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
+                    onChange={(token) => setCaptchaToken(token)}
+                    onExpired={() => setCaptchaToken(null)}
+                  />
                 </div>
 
                 <button type="submit" className={styles.submitBtn} disabled={isSending}>
