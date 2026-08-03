@@ -1,7 +1,7 @@
 import React from 'react';
-import Gallery from '../components/Gallery';
-import GalleryPage from "../components/GalleryPage/GalleryPage"
-import Footer from '../components/Footer';
+import Gallery from '../../components/Gallery/Gallery';
+import GalleryPage from "../../components/GalleryPage/GalleryPage"
+import Footer from '../../components/Footer/Footer';
 import styles from './Gallary.module.css';
 
 const Gallary = () => (
