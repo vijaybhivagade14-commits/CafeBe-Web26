@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import ScrollTop from './components/ScrollTop';
-import Home from './pages/Home';
-import About from './pages/About';
-import Gallary from './pages/Gallary';
-import Contact from './pages/Contact';
+import Navbar from './components/Navbar/Navbar';
+import ScrollTop from './components/ScrollTop/ScrollTop';
+import Home from './pages/Home/Home';
+import About from './pages/About/About';
+import Gallary from './pages/Gallery/Gallary';
+import Contact from './pages/Contact/Contact';
 import Menu from './pages/Menu';
 import Reservation from './pages/Reservation';
 

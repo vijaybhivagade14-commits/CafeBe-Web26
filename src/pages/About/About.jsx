@@ -1,8 +1,8 @@
 import React from 'react';
 import { FiMapPin, FiPhone, FiMail, FiCompass, FiHeart, FiAward, FiCoffee } from 'react-icons/fi';
-import Stats from '../components/Stats';
-import Testimonials from '../components/Testimonials';
-import Footer from '../components/Footer';
+import Stats from '../../components/Stats/Stats';
+import Testimonials from '../../components/Testimonials';
+import Footer from '../../components/Footer/Footer';
 import styles from './About.module.css';
 
 const About = () => {
