@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FiMapPin, FiPhone, FiMail, FiClock, FiSend, FiCheckCircle } from 'react-icons/fi';
-import Footer from '../components/Footer';
+import Footer from '../../components/Footer/Footer';
 import styles from './Contact.module.css';
 
 const initialState = { name: '', email: '', subject: '', message: '' };
