@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { FiMapPin, FiPhone, FiMail, FiClock, FiSend, FiCheckCircle } from 'react-icons/fi';
+import emailjs from '@emailjs/browser';
+import { FiMapPin, FiPhone, FiMail, FiClock, FiSend, FiCheckCircle, FiAlertCircle } from 'react-icons/fi';
 import Footer from '../../components/Footer/Footer';
 import styles from './Contact.module.css';
 
@@ -18,7 +19,8 @@ function validate(values) {
 const Contact = () => {
   const [values, setValues] = useState(initialState);
   const [errors, setErrors] = useState({});
-  const [status, setStatus] = useState(null);
+  const [status, setStatus] = useState(null); // { type: 'success' | 'error', text: string }
+  const [isSending, setIsSending] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -26,7 +28,7 @@ const Contact = () => {
     setErrors((s) => ({ ...s, [name]: undefined }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const errs = validate(values);
     if (Object.keys(errs).length) {
@@ -34,8 +36,31 @@ const Contact = () => {
       setStatus(null);
       return;
     }
-    setStatus('Message sent successfully! We\'ll get back to you soon.');
-    setValues(initialState);
+
+    setIsSending(true);
+    setStatus(null);
+
+    try {
+      await emailjs.send(
+        process.env.REACT_APP_EMAILJS_SERVICE_ID,
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+        {
+          from_name: values.name,
+          from_email: values.email,
+          subject: values.subject,
+          message: values.message,
+        },
+        process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+      );
+
+      setStatus({ type: 'success', text: "Message sent successfully! We'll get back to you soon." });
+      setValues(initialState);
+    } catch (err) {
+      console.error('EmailJS error:', err);
+      setStatus({ type: 'error', text: 'Something went wrong. Please try again or email us directly.' });
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
@@ -48,7 +73,7 @@ const Contact = () => {
         <div className={styles.heroContent}>
           <span className={styles.kicker}>Get In Touch</span>
           <h1 className={styles.heroTitle}>
-            We’d Love To <em>Hear From You</em>
+            We'd Love To <em>Hear From You</em>
           </h1>
           <p className={styles.heroSubtitle}>
             Have questions, feedback, or table reservations? Reach out to us and our warm hospitality team will respond within 24 hours.
@@ -71,7 +96,7 @@ const Contact = () => {
             <div className={styles.infoCard}>
               <div className={styles.infoIconWrap}><FiPhone /></div>
               <h3>Call Us</h3>
-              <p>+91 80000 00000<br />+91 80801 46176</p>
+              <p>+91 7219 793033<br />+91 80801 46176</p>
             </div>
 
             <div className={styles.infoCard}>
@@ -111,6 +136,7 @@ const Contact = () => {
                       onChange={handleChange}
                       placeholder="e.g. John Doe"
                       className={errors.name ? styles.inputError : ''}
+                      disabled={isSending}
                     />
                     {errors.name && <span className={styles.errorText}>{errors.name}</span>}
                   </div>
@@ -124,6 +150,7 @@ const Contact = () => {
                       onChange={handleChange}
                       placeholder="john@example.com"
                       className={errors.email ? styles.inputError : ''}
+                      disabled={isSending}
                     />
                     {errors.email && <span className={styles.errorText}>{errors.email}</span>}
                   </div>
@@ -137,6 +164,7 @@ const Contact = () => {
                     onChange={handleChange}
                     placeholder="e.g. Reservation Inquiry / Event Inquiry"
                     className={errors.subject ? styles.inputError : ''}
+                    disabled={isSending}
                   />
                   {errors.subject && <span className={styles.errorText}>{errors.subject}</span>}
                 </div>
@@ -150,18 +178,19 @@ const Contact = () => {
                     placeholder="Tell us more about how we can help..."
                     rows={5}
                     className={errors.message ? styles.inputError : ''}
+                    disabled={isSending}
                   />
                   {errors.message && <span className={styles.errorText}>{errors.message}</span>}
                 </div>
 
-                <button type="submit" className={styles.submitBtn}>
-                  <FiSend className={styles.btnIcon} /> Send Message
+                <button type="submit" className={styles.submitBtn} disabled={isSending}>
+                  <FiSend className={styles.btnIcon} /> {isSending ? 'Sending...' : 'Send Message'}
                 </button>
 
                 {status && (
-                  <div className={styles.successBox}>
-                    <FiCheckCircle className={styles.successIcon} />
-                    <span>{status}</span>
+                  <div className={status.type === 'success' ? styles.successBox : styles.errorBox}>
+                    {status.type === 'success' ? <FiCheckCircle className={styles.successIcon} /> : <FiAlertCircle className={styles.errorIcon} />}
+                    <span>{status.text}</span>
                   </div>
                 )}
               </form>
