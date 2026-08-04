@@ -6,7 +6,7 @@ import styles from './Navbar.module.css';
 const navigation = [
   { to: '/', label: 'Home' },
   { to: '/menu', label: 'Menu' },
-  { to: '/gallary', label: 'Gallery' },
+  { to: '/gallery', label: 'Gallery' },
   { to: '/about', label: 'Our Story' },
   { to: '/reservation', label: 'Reservation' },
   { to: '/contact', label: 'Contact' },

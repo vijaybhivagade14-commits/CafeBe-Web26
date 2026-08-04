@@ -4,7 +4,7 @@ import Navbar from './components/Navbar/Navbar';
 import ScrollTop from './components/ScrollTop/ScrollTop';
 import Home from './pages/Home/Home';
 import About from './pages/About/About';
-import Gallary from './pages/Gallery/Gallary';
+import Gallery from './pages/Gallery/Gallery';
 import Contact from './pages/Contact/Contact';
 import Menu from './pages/Menu';
 import Reservation from './pages/Reservation';
@@ -13,7 +13,7 @@ import Reservation from './pages/Reservation';
 function MainLayout() {
   const location = useLocation();
   // Check karega ki kya user in pages par hai jahan Hero section hai (taaki gap na aaye)
-  const noPaddingPages = ['/', '/gallary', '/about', '/reservation', '/contact'];
+  const noPaddingPages = ['/', '/gallery', '/about', '/reservation', '/contact'];
   const isNoPaddingPage = noPaddingPages.includes(location.pathname);
 
   return (
@@ -24,7 +24,7 @@ function MainLayout() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/menu" element={<Menu />} />
-          <Route path="/gallary" element={<Gallary />} />
+          <Route path="/gallery" element={<Gallery />} />
           <Route path="/about" element={<About />} />
           <Route path="/reservation" element={<Reservation />} />
           <Route path="/contact" element={<Contact />} />
