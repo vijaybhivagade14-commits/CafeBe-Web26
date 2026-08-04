@@ -1,10 +1,10 @@
 import React from 'react';
-import Gallery from '../../components/Gallery/Gallery';
+// import Gallery from '../../components/Gallery/Gallery';
 import GalleryPage from "../../components/GalleryPage/GalleryPage"
 import Footer from '../../components/Footer/Footer';
-import styles from './Gallary.module.css';
+import styles from './Gallery.module.css';
 
-const Gallary = () => (
+const Gallery = () => (
   <div className={styles.page}>
     {/* Hero Banner */}
     {/* Hero Banner */}
@@ -65,4 +65,4 @@ const Gallary = () => (
   </div>
 );
 
-export default Gallary;
+export default Gallery;
