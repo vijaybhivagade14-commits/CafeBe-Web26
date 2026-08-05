@@ -24,6 +24,7 @@ const Contact = () => {
   const [isSending, setIsSending] = useState(false);
   const [captchaToken, setCaptchaToken] = useState(null);
   const recaptchaRef = useRef(null);
+  const recaptchaSiteKey = process.env.REACT_APP_RECAPTCHA_SITE_KEY;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -106,7 +107,7 @@ const Contact = () => {
             <div className={styles.infoCard}>
               <div className={styles.infoIconWrap}><FiPhone /></div>
               <h3>Call Us</h3>
-              <p>+91 80000 00000<br />+91 80801 46176</p>
+              <p>+91 72197 93033 <br />+91 80801 46176</p>
             </div>
 
             <div className={styles.infoCard}>
@@ -194,12 +195,18 @@ const Contact = () => {
                 </div>
 
                 <div className={styles.field}>
-                  <ReCAPTCHA
-                    ref={recaptchaRef}
-                    sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
-                    onChange={(token) => setCaptchaToken(token)}
-                    onExpired={() => setCaptchaToken(null)}
-                  />
+                  {recaptchaSiteKey ? (
+                    <ReCAPTCHA
+                      ref={recaptchaRef}
+                      sitekey={recaptchaSiteKey}
+                      onChange={(token) => setCaptchaToken(token)}
+                      onExpired={() => setCaptchaToken(null)}
+                    />
+                  ) : (
+                    <div className={styles.errorText}>
+                      ReCAPTCHA key is missing. Set REACT_APP_RECAPTCHA_SITE_KEY in your environment.
+                    </div>
+                  )}
                 </div>
 
                 <button type="submit" className={styles.submitBtn} disabled={isSending}>
